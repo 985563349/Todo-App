@@ -1,17 +1,18 @@
 <script setup>
-import { defineProps, defineEmits, ref } from 'vue';
+import { ref, toRefs } from 'vue';
 
-const props = defineProps({ tid: String });
+const props = defineProps({ tid: [String, Number] });
+const { tid } = toRefs(props);
+
 const emits = defineEmits(['add-todo']);
-
-const { todoContent, emitAddTodo } = useEmitAddTodo(props.tid, emits);
+const { todoContent, emitAddTodo } = useEmitAddTodo(tid, emits);
 
 function useEmitAddTodo(tid, emits) {
   const todoContent = ref('');
 
   const emitAddTodo = () => {
     const todo = {
-      id: tid,
+      id: tid.value,
       content: todoContent.value,
       completed: false,
     };

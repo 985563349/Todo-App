@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from 'vue';
 import TodoItem from './TodoItem.vue';
 
 defineProps({ todos: Array });

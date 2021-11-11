@@ -8,8 +8,8 @@ export default function useTodos() {
       'https://jsonplaceholder.typicode.com/todos?_limit=5'
     );
     const rawTodos = await response.json();
-    todos.value = rawTodos.map((todo) => ({
-      id: todo.id,
+    todos.value = rawTodos.map((todo, i) => ({
+      id: i,
       content: todo.title,
       completed: todo.completed,
     }));

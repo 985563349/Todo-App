@@ -24,8 +24,8 @@
       'https://jsonplaceholder.typicode.com/todos?_limit=5'
     );
     const rawTodos = await response.json();
-    todos = rawTodos.map((todo, index) => ({
-      id: index,
+    todos = rawTodos.map((todo, i) => ({
+      id: i,
       content: todo.title,
       completed: todo.completed,
     }));
