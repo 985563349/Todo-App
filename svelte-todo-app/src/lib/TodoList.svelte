@@ -1,5 +1,8 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
   import TodoItem from './TodoItem.svelte';
+
+  const dispatch = createEventDispatcher();
 
   export let todos;
 </script>
@@ -9,7 +12,10 @@
     <TodoItem
       todoItem={todo}
       on:change-state={(event) => {
-        todo.completed = event.detail.target.checked;
+        dispatch('changeTodo', {
+          id: todo.id,
+          todo: { ...todo, completed: event.detail.target.checked },
+        });
       }}
     />
   {/each}

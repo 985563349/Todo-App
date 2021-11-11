@@ -10,13 +10,22 @@
     todos = todos.concat(event.detail);
   }
 
+  function changeTodo(event) {
+    const index = todos.findIndex((todo) => todo.id === event.detail.id);
+    if (index !== -1) {
+      todos[index] = event.detail.todo;
+      // 赋值操作触发更新
+      todos = todos;
+    }
+  }
+
   async function fetchTodos() {
     const response = await fetch(
       'https://jsonplaceholder.typicode.com/todos?_limit=5'
     );
     const rawTodos = await response.json();
-    todos = rawTodos.map((todo) => ({
-      id: todo.id,
+    todos = rawTodos.map((todo, index) => ({
+      id: index,
       content: todo.title,
       completed: todo.completed,
     }));
@@ -49,7 +58,7 @@
       selected={filter}
       on:changeFilter={(evnet) => (filter = evnet.detail)}
     />
-    <TodoList todos={filteredTodos} />
+    <TodoList todos={filteredTodos} on:changeTodo={changeTodo} />
   </div>
 </main>
 
