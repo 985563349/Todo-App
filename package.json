@@ -18,6 +18,7 @@
   "homepage": "https://github.com/985563349/todo-app#readme",
   "dependencies": {
     "svelte": "^3.44.1",
+    "tailwindcss": "^2.2.19",
     "vue": "^3.0.5"
   },
   "devDependencies": {
@@ -28,7 +29,6 @@
     "eslint": "^8.2.0",
     "eslint-plugin-vue": "^8.0.3",
     "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.19",
     "vite": "^2.6.14"
   }
 }
